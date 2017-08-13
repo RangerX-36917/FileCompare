@@ -1,26 +1,11 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-
-
-typedef struct document{
-  char *fname,*fpath; //store name and path of a document
-  document *next = NULL; //pointer to the next document of the same size
-}file;
-
-struct node{
-  node *next[10]; //pointers to digits
-  document *docu; //pointers to documents
-};
-
-node *root; //root node for the tree
+#include "DictTree.h"
 
 //create a branch of documents which have the same size "str"
-void create(long length ,char *name, char *path){ 
+void DictTree::create(long length ,char *name, char *path){ 
     char *str;
     sprintf(str, "%ld", length);
     int len = strlen(str);
-    node *p = root;
+    node *p = DictTree::root;
     for (int i = 0; i < len; i++){
        int in = str[i] - '0';
        if (p->next[in] == NULL){
@@ -36,11 +21,11 @@ void create(long length ,char *name, char *path){
 }
 
 //check if a branch of documents with size length exists 
-bool query(long length){
+bool DictTree::query(long length){
     char *str;
     sprintf(str, "%ld", length);
     int len = strlen(str);
-    node *p = root, *q;
+    node *p = DictTree::root, *q;
     for (int i = 0; i < len; i++){
         int in = str[i] - '0';
         if (p->next[in] == NULL) return 0;
@@ -50,12 +35,12 @@ bool query(long length){
 }
 
 //go through the branch of size length
-void output(long length){
+void DictTree::output(long length){
     char *str;
     sprintf(str, "%ld", length);
     int len = strlen(str);
 
-    node *p = root; 
+    node *p = DictTree::root; 
     document *q;
     int in;
     for (int i = 0; i < len; i++){
@@ -75,12 +60,13 @@ void output(long length){
    
 }
 
-void insertf(long length, char *name, char *path) {
+void DictTree::insertf(long length, char *name, char *path) {
     char *str;
     sprintf(str, "%ld", length);
     int len = strlen(str);
     
-    node *p = root; 
+    node *p;
+    p = DictTree::root; 
     document *q;
     int in;
     //get to the node of size str
@@ -100,13 +86,13 @@ void insertf(long length, char *name, char *path) {
     q->fpath = path;
     q->next = NULL;
 }
-void freedocu(document *ptr) {
+void DictTree::freedocu(document *ptr) {
     if (ptr->next != NULL) {
         freedocu(ptr->next);
     }
     free(ptr);
 }
-void freetree(node *ptr){
+void DictTree::freetree(node *ptr){
     if (ptr->docu != NULL) {
         freedocu(ptr->docu);
     }
@@ -116,16 +102,5 @@ void freetree(node *ptr){
     free(ptr);
 }
 
-int main(){
-  file f;
-    int t,n;
-    char size[100];
-   
-    root = (node *)malloc(sizeof(node)); //allocate memory for dictionary tree
-    for (int i = 0;i < 10; i++)
-      root->next[i] = NULL;
 
-   
-    return 0;
-}
 
