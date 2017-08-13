@@ -1,5 +1,4 @@
 //directory traversal is adapted from "Begining Linux Programming 4th edition" by Neil Matthew and Richard Stones  
-//#include "Trie.h"
 #include <unistd.h>
 #include <stdio.h>
 #include <dirent.h>
