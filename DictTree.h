@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <string.h>
 
-<<<<<<< HEAD
 //node of documents
 typedef struct document{
     char fname[200];//store file name
@@ -14,19 +13,11 @@ typedef struct document{
 }file;
 
 //node of dictionary tree
-=======
-typedef struct document{
-    char *fname,*fpath; //store name and path of a document
-    document *next = NULL; //pointer to the next document of the same size
-}file;
-
->>>>>>> ffaa796f968e3a3034e54ec537834d95f1378174
 struct node{
     node *next[10]; //pointers to digits
     document *docu; //pointers to documents
 };
 
-<<<<<<< HEAD
 
 
 class DictTree{
@@ -42,18 +33,3 @@ class DictTree{
   
 };
 #endif
-=======
-class DictTree{
-    
-    public:
-    static node *root; //root node for the tree
-    void create(long length ,char *name, char *path);
-    bool query(long length);
-    void output(long length);
-    void insertf(long length, char *name, char *path);
-    void freedocu(document *ptr);
-    void freetree(node *ptr);
-};
-#endif
-
->>>>>>> ffaa796f968e3a3034e54ec537834d95f1378174
