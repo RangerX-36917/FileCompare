@@ -59,9 +59,11 @@ void processArgs(int argc, char** argv) {
       case 'd':
         detail = 1;
         break;
+      case 'h':
+        system("cat README");
+        break;
       case '?':
         printf("Scan: '%c' is not a valid option. See './scan -h'\n", optopt);
-        system("cat README");
         exit(1);
         break;
       }
