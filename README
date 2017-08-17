@@ -1,0 +1,10 @@
+Scan will go through the designated directory and find out any files that
+are exactly the same. 
+
+usage: ./scan [-d] [path]
+
+If you provide no option, Scan will scan your home directory (/home) 
+by default and will only print the results.
+
+    -d      Print the file been processing
+    path    absolute path of the directory you wish to scan

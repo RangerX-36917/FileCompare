@@ -2,6 +2,7 @@
 #include "DictTree.h" 
 #include "MyFile.h"
 //create a branch of documents which have the same size "str"
+
 void DictTree::create(long length ,char *name, char *path, node *root){ 
 
     int in = 0;
@@ -55,7 +56,7 @@ bool DictTree::query(long length, node *root){
 }
 
 //go through the list of size length and compare files
-int DictTree::ListDocu(long length, const char *path, const char *name, node *root){
+int DictTree::ListDocu(long length, const char *path, const char *name, node *root, FILE *fp){
 
     node *p = root; 
     document *q;
@@ -79,7 +80,7 @@ int DictTree::ListDocu(long length, const char *path, const char *name, node *ro
     path2 += '/';
     path2 += q->fname;
    
-    if (docuCheck(q, path1)) return 1;\
+    if (docuCheck(q, path1, fp)) return 1;\
     else return 0;
     
     return 1;
@@ -138,16 +139,14 @@ void DictTree::freetree(node *ptr){
    free(ptr);
    
 }
-int DictTree::docuCheck(document *q, std::string path1) {
+int DictTree::docuCheck(document *q, std::string path1, FILE *fp = NULL) {
     std::string path2 = q->fpath;
     path2 += '/';
     path2 += q->fname;
 
     if (MyFile::Compare(path1, path2)) {
-        std::cout << path2 << '\t' << "is identical to" << '\t' << path1 << std::endl;\
+        fprintf(fp,"%s\t%s\n", path1.c_str(), path2.c_str());
         return 1;\
-    } //else \
-        if (q->next != NULL) \
-            docuCheck(q->next, path1);
+    }
     return 0;
 }

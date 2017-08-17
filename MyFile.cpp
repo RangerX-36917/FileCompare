@@ -2,10 +2,6 @@
 #include "MyFile.h"
 #define multiple 64
 int MyFile::Compare(std::string path1, std::string path2){
-  //printf("sleep");\
-  usleep(250);
-
-  
   
   int leng1 = path1.length();
   int leng2 = path2.length();
@@ -22,7 +18,7 @@ int MyFile::Compare(std::string path1, std::string path2){
   FILE * fpIn1,  * fpIn2 ;
   fpIn1 = fopen (_path1, "rb");
   fpIn2 = fopen (_path2, "rb");
-  
+  //compare two files block by block
   if (fpIn1 && fpIn2 ) {
     while (((iRead = fread (char1, 1, sizeof (char1)*multiple, fpIn1)) > 0) && ((iRead = fread (char2, 1, sizeof (char2)*multiple, fpIn2)) > 0)){ 
        if (strcmp(char1, char2)) {

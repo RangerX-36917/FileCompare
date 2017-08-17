@@ -1,5 +1,6 @@
 #ifndef __MYFILE__
 #define __MYFILE__
+
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
