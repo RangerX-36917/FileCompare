@@ -19,17 +19,9 @@ int MyFile::Compare(std::string path1, std::string path2){
   char1 = new char[10000];
   char2 = new char[10000];
   
-  printf("\n\n **************** \n %s--vs--%s \n\n", _path1, _path2);
-  
   FILE * fpIn1,  * fpIn2 ;
-  if (fpIn2 = fopen (_path2, "rb"))
-    printf("1->%p\t", fpIn1);
-  else return 2;
-  if (fpIn1 = fopen (_path1, "rb"))
-    printf("2->%p\n", fpIn1);
-  else return 2;
-  
-  //printf("pointers :->1 %p ->2 %p",fpIn1, fpIn2);
+  fpIn1 = fopen (_path1, "rb");
+  fpIn2 = fopen (_path2, "rb");
   
   if (fpIn1 && fpIn2 ) {
     while (((iRead = fread (char1, 1, sizeof (char1)*multiple, fpIn1)) > 0) && ((iRead = fread (char2, 1, sizeof (char2)*multiple, fpIn2)) > 0)){ 

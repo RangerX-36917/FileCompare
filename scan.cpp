@@ -67,6 +67,7 @@ void printdir(const char *dir, const string fdir = "", node *root = NULL) {
 }
 
 int main(int argc, char** argv) {
+  //return 0;
   node *root = (node*)malloc(sizeof(node));
     for(int i = 0; i < 10; i++)
         root->next[i] = NULL;
