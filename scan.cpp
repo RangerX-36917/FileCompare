@@ -61,6 +61,7 @@ void processArgs(int argc, char** argv) {
         break;
       case 'h':
         system("cat README");
+        exit(1);
         break;
       case '?':
         printf("Scan: '%c' is not a valid option. See './scan -h'\n", optopt);
